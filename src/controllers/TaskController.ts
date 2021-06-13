@@ -6,16 +6,27 @@ const ApiController = {
     getTasks: async (req, res) => {
         
         try{
-            let tasksNumberRequired:number = req.query.task_number ? parseInt(req.query.task_number) : 3;
+            let tasksNumberRequired:number = 3;
+            if(req.query.tasks_number){
+                if(typeof(req.query.task_number) === 'number' || parseInt(req.query.tasks_number)){
+                    tasksNumberRequired = parseInt(req.query.tasks_number)
+                }else{
+                    res.json({
+                        result: 'error',
+                        details: "Invalid tasks_number value. It must be a number."
+                    })
+                    return;
+                }
+            }
             if(tasksNumberRequired < 1 || tasksNumberRequired > 500){
                 res.json({
                     result: 'error',
-                    description: 'Invalid task_number range. It should be between 1 and 500'
+                    description: 'Invalid task_number range. It must be between 1 and 500'
                 });
                 return;
             }
 
-            // Get the number of tasks stored
+            // Get the total tasks stored
             const totalStoredTasks = await TaskHelper.getTotalTasks();
             if(!totalStoredTasks){
                 res.json({
@@ -78,7 +89,10 @@ const ApiController = {
 
             res.json({
                 result: 'success',
-                data: taskList
+                data: {
+                    total: Math.max(totalStoredTasks, tasksNumberRequired),
+                    tasks: taskList
+                }
             })
         }catch(error){
             console.error('### ERROR getTasks: ', error)

@@ -4,7 +4,8 @@
         "moduleResolution": "node",
         "module": "commonjs",
         "allowJs": true,
-        "target": "ES6"
+        "target": "ES6",
+        "types": ["jest"]
     },
     "include": [
         "./src/**/*",

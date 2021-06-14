@@ -37,7 +37,7 @@ const ApiController = {
             }
             // Get the total tasks stored
             const totalStoredTasks = yield TaskHelper_1.default.getTotalTasks();
-            if (!totalStoredTasks) {
+            if (totalStoredTasks === null) {
                 res.json({
                     result: 'error',
                     description: 'Error retrieving total tasks. Please, try later.'

@@ -28,7 +28,7 @@ const ApiController = {
 
             // Get the total tasks stored
             const totalStoredTasks = await TaskHelper.getTotalTasks();
-            if(!totalStoredTasks){
+            if(totalStoredTasks === null){
                 res.json({
                     result: 'error',
                     description: 'Error retrieving total tasks. Please, try later.'

@@ -8,9 +8,9 @@ ENV DATABASE_NAME
 ENV DATABASE_NAME_TEST
 
 2. Create Docker image
-$ docker build -t task_list_api -f Dockerfile .
+$ docker build -t tasklistapi -f Dockerfile .
 
 3. Run
-$ docker run -i -p 4000:4000 -t task_list_api
+$ docker run -i -p 4000:4000 -t tasklistapi
 
 3. Access to the api endpoint by [YourHost]/api/v1

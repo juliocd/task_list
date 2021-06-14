@@ -90,7 +90,7 @@ const ApiController = {
                 taskCounter++;
             }
             res.json({
-                result: 'success__',
+                result: 'success',
                 data: {
                     total: Math.max(totalStoredTasks, tasksNumberRequired),
                     batch_size: tasksNumberRequired,

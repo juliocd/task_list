@@ -7,11 +7,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-RUN npm install && npm install typescript && npm install ts-node && npm install jest
-
 # Bundle app source
 COPY . .
 
+RUN npm install && npm install typescript && npm install ts-node && npm install jest
 RUN npm run build
 
 ENV NODE_ENV production

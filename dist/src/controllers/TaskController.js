@@ -98,8 +98,8 @@ const ApiController = {
                 }
             });
         }
-        catch (error) {
-            console.error('### ERROR getTasks: ', error);
+        catch (e) {
+            console.error('### ERROR getTasks: ', e);
             res.json({
                 result: 'error',
                 details: 'Error retrieving the task list. Please validate the information and try again.'

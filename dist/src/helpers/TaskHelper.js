@@ -29,7 +29,7 @@ class TaskHelper {
         return __awaiter(this, void 0, void 0, function* () {
             let response = [];
             try {
-                const storedTasksResponse = yield Task.find({}).sort({ 'date_created': 1 }).limit(limit);
+                const storedTasksResponse = yield Task.find({}).sort({ '_id': 1 }).limit(limit);
                 for (const storedTask of storedTasksResponse) {
                     response.push({
                         title: storedTask.title,
@@ -49,7 +49,7 @@ class TaskHelper {
         return __awaiter(this, void 0, void 0, function* () {
             let response = [];
             try {
-                const newTasksResponse = yield Task.collection.insertMany(tasks);
+                const newTasksResponse = yield Task.collection.insertMany(tasks, { ordered: true });
                 if (newTasksResponse.result.ok != 1) {
                     return null;
                 }

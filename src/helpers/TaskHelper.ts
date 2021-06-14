@@ -21,7 +21,7 @@ class TaskHelper {
         let response:ITask[] = [];
 
         try{
-            const storedTasksResponse:any[] = await Task.find({}).sort({'date_created': 1}).limit(limit);
+            const storedTasksResponse:any[] = await Task.find({}).sort({'_id': 1}).limit(limit);
             for(const storedTask of storedTasksResponse){
                 response.push({
                     title: storedTask.title,
@@ -41,7 +41,7 @@ class TaskHelper {
         let response:ITask[] = [];
 
         try{
-            const newTasksResponse:any = await Task.collection.insertMany(tasks);
+            const newTasksResponse:any = await Task.collection.insertMany(tasks, {ordered: true});
             if(newTasksResponse.result.ok != 1){
                 return null;
             }

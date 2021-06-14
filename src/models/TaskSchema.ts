@@ -10,10 +10,9 @@ export const TaskSchema = new Schema({
         type: Boolean,
         default: false
     },
-    date_created: {
+    creted_at: {
        type: Date,
-       default: Date.now,
-       require: true
+       default: Date.now
     }
 });
 

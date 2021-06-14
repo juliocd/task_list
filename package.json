@@ -4,8 +4,9 @@
   "description": "API to provide a task list",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --w",
-    "start": "tsc && ts-node ./dist/index.js",
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "tsc && ts-node ./dist/index.js",
     "test": "jest"
   },
   "author": "Julio Diaz",

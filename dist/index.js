@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const index_1 = require("./src/routes/index");
 const app = express();
 // env setup
@@ -11,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+// enable cors
+app.use(cors());
 // routes
 app.use('/api/v1', index_1.default.api);
 // routes(app, '/api/v1');

@@ -60,5 +60,7 @@ mongoose.connect(databaseUri, {
 
 process.on('SIGINT', () => {
     console.log('Received interrupt signal. Closing MongoDB connections...');
-    mongoose.connection.close();
+    mongoose.connection.close().then(()=> {
+        process.exit(0);
+    });
 });

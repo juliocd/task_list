@@ -1,16 +1,22 @@
-1. Set up docker ENV variables (The Docker file has loaded the test data)
-ENV NODE_ENV production
-ENV PORT
-ENV HIPSUM_HOST_API_HOST
-ENV DATABASE_USER
-ENV DATABASE_PASSWORD
-ENV DATABASE_NAME
-ENV DATABASE_NAME_TEST
+# Task List Api
 
-2. Create Docker image
-$ docker build -t tasklistapi -f Dockerfile .
+## Run app by Docker (localhost)
+### 1. Create Docker image
+`$ docker build -t tasklistapi -f Dockerfile .`
+### 2. Run Docker image from container
+`$ docker run -i -p 4000:4000 -t tasklistapi`
+### 3. Access by
+[http://localhost:4000/api/v1](http://localhost:4000/api/v1)
 
-3. Run
-$ docker run -i -p 4000:4000 -t tasklistapi
+## Run app in local environment
+### 1. Run
+`$ npm start`
+### 2. Access by
+[http://localhost:4000/api/v1](http://localhost:4000/api/v1)
+## Run app in local environment (Dev)
+`$ npm run dev`
+## Run app unitary test
+`$ npm test`
 
-3. Access to the api endpoint by [YourHost]/api/v1
+## Env Variables
+REACT_APP_TASK_LIST_API_HOST: Task list api host

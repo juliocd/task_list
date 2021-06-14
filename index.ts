@@ -11,7 +11,7 @@ require('dotenv').config()
 // json setup
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: true
+    extended: true
 }));
 
 // enable cors
@@ -33,10 +33,10 @@ const databaseUri: string = `mongodb+srv://${process.env.DATABASE_USER}:${proces
 mongoose.connect(databaseUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex:true,
+    useCreateIndex: true,
 }).then(() => {
     console.log('Database Connected');
-    app.listen(PORT, () => {    
+    app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     })
 });

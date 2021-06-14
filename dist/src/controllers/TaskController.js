@@ -93,7 +93,8 @@ const ApiController = {
                 result: 'success',
                 data: {
                     total: Math.max(totalStoredTasks, tasksNumberRequired),
-                    tasks: taskList
+                    batch_size: tasksNumberRequired,
+                    batch: taskList
                 }
             });
         }

@@ -91,11 +91,12 @@ const ApiController = {
                 result: 'success',
                 data: {
                     total: Math.max(totalStoredTasks, tasksNumberRequired),
-                    tasks: taskList
+                    batch_size: tasksNumberRequired,
+                    batch: taskList
                 }
             })
-        }catch(error){
-            console.error('### ERROR getTasks: ', error)
+        }catch(e){
+            console.error('### ERROR getTasks: ', e)
             res.json({
                 result: 'error',
                 details: 'Error retrieving the task list. Please validate the information and try again.'

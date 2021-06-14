@@ -28,6 +28,23 @@ app.get('/', (req, res) =>
     res.send(`Server running on port ${PORT}`)
 );
 
+// Enable much better reporting for unhandled promise rejections.
+process.on('unhandledRejection', e => {
+    console.error(`${Date.now()} - unhandledRejection - index.js`);
+    console.error(e);
+    process.exit(0);
+});
+
+// Enable better reporting on warnings.
+process.on('warning', e => console.error(e));
+
+// Enable better reporting on uncaught exceptions.
+process.on('uncaughtException', e => {
+    console.error(`${Date.now()} - uncaughtException - index.js`);
+    console.error(e);
+    process.exit(0);
+});
+
 // mongoose connection
 const databaseUri: string = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.jnmms.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(databaseUri, {
@@ -39,4 +56,9 @@ mongoose.connect(databaseUri, {
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     })
+});
+
+process.on('SIGINT', () => {
+    console.log('Received interrupt signal. Closing MongoDB connections...');
+    mongoose.connection.close();
 });

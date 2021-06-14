@@ -32,3 +32,7 @@ This method returns the number of tasks, by default it returns 3 task. The param
 [http://localhost:4000/api/v1/task](http://localhost:4000/api/v1/task)
 
 This method marks a task as completed. It receives parameter called `task_id` (required) which should be an `string`.
+
+## Dev Enviroment
+Node 10.22.1
+npm 6.14.6

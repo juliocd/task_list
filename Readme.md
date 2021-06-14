@@ -20,3 +20,15 @@
 
 ## Env Variables
 REACT_APP_TASK_LIST_API_HOST: Task list api host
+
+## Endpoints
+
+### [GET] Get tasks
+[http://localhost:4000/api/v1/tasks](http://localhost:4000/api/v1/tasks)
+
+This method returns the number of tasks, by default it returns 3 task. The parameter `tasks_number` is optional. This parameter should be a `number` and be between `1` and `500`. It was restricted because the Hipsum API could restrict its consumption if the volume of requests is too high.
+
+### [PUT] Mark task as completed
+[http://localhost:4000/api/v1/task](http://localhost:4000/api/v1/task)
+
+This method marks a task as completed. It receives parameter called `task_id` (required) which should be an `string`.
